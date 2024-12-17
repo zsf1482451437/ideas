@@ -1,8 +1,12 @@
 import React from 'react';
+import classNames from 'classnames/bind';
+import styles from './index.module.scss';
 
 import MemoryTrail from '@/components/memoryTrail';
 import type { MemoryNode } from '@/components/memoryTrail';
-import BasicDatePicker from '@/components/datePicker';
+import DateCollection from '@/components/dateCollection';
+
+const cn = classNames.bind(styles);
 
 const DELAY = 1500;
 
@@ -18,10 +22,10 @@ const nodes: MemoryNode[] = [
 
 export default function Utils() {
   return (
-    <div>
+    <div className={cn('utils')}>
       <h2>Utils</h2>
-      <MemoryTrail nodes={nodes} delay={DELAY} lineType="curved" />
-      <BasicDatePicker />
+      <DateCollection />
+      {/* <MemoryTrail nodes={nodes} delay={DELAY} lineType="curved" /> */}
     </div>
   );
 }
