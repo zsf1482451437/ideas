@@ -1,5 +1,13 @@
 import React from 'react';
 
+import type { NavItem } from '@/components/header';
+import Header from '@/components/header';
+
+const navItems: NavItem[] = [
+  { label: '首页', href: '/' },
+  { label: '工具集', href: '/utils' },
+];
+
 export default function RootLayout({
   children,
 }: {
@@ -7,8 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <header>1234</header> */}
-      <body>{children}</body>
+      <body>
+        <Header navItems={navItems} />
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
