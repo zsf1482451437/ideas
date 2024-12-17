@@ -1,12 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-interface Node {
+interface BaseNode {
   visible: boolean;
-  [key: string]: any;
 }
-
-interface UseProcessControlReturn {
-  visibleNodes: Node[];
+interface UseProcessControlReturn<T extends BaseNode> {
+  visibleNodes: T[];
   currentIndex: number;
   handleNext: () => void;
   handlePrev: () => void;
@@ -16,8 +14,8 @@ interface UseProcessControlReturn {
   isPaused: boolean;
 }
 
-const useProcessControl = (nodes: Node[], delay: number): UseProcessControlReturn => {
-  const [visibleNodes, setVisibleNodes] = useState<Node[]>(
+const useProcessControl = <T extends BaseNode>(nodes: T[], delay: number): UseProcessControlReturn<T> => {
+  const [visibleNodes, setVisibleNodes] = useState<T[]>(
     nodes.map((node) => ({ ...node, visible: false }))
   );
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -25,7 +23,7 @@ const useProcessControl = (nodes: Node[], delay: number): UseProcessControlRetur
   const timeoutRefs = useRef<NodeJS.Timeout[]>([]);
 
   const showNodes = useCallback(
-    (nodes: Node[], startIndex: number) => {
+    (nodes: T[], startIndex: number) => {
       setVisibleNodes(
         nodes.map((node, i) => ({ ...node, visible: i <= startIndex }))
       );
