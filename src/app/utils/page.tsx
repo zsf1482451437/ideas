@@ -2,6 +2,7 @@ import React from 'react';
 
 import MemoryTrail from '@/components/memoryTrail';
 import type { MemoryNode } from '@/components/memoryTrail';
+import BasicDatePicker from '@/components/datePicker';
 
 const DELAY = 1500;
 
@@ -20,6 +21,7 @@ export default function Utils() {
     <div>
       <h2>Utils</h2>
       <MemoryTrail nodes={nodes} delay={DELAY} lineType="curved" />
+      <BasicDatePicker />
     </div>
   );
 }
