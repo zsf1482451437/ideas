@@ -1,4 +1,32 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
+  gap: 18px;
+
+  .chip_list {
+    margin-top: 8px;
+
+    .chip_item {
+      margin: 2px 4px 0 0;
+    }
+  }
+
+  .floating {
+    position: absolute;
+    animation: floatUp 1s ease-in-out forwards;
+    color: green;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  @keyframes floatUp {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+  }
 }
