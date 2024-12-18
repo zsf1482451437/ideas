@@ -1,0 +1,25 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.floating {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  animation: floatUp 1s ease-in-out forwards;
+  color: green;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
